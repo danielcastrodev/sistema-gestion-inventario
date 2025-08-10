@@ -1,6 +1,8 @@
 # Sistema de Inventario
 
-Sistema de gestión de inventario basado en web con Firebase Firestore como backend.
+Sistema de gestión de inventario basado en web con Firebase como backend.
+Puedes visitarlo en https://constructora-pyme.web.app/
+con una base de datos en tiempo real
 
 ## Características
 
@@ -9,12 +11,10 @@ Sistema de gestión de inventario basado en web con Firebase Firestore como back
 - Dashboard con estadísticas del inventario
 - Configuración personalizable
 - Almacenamiento en la nube con Firebase Firestore
-- Fallback a localStorage cuando no hay conexión
 
 ## Tecnologías
 
-- HTML5, CSS3, JavaScript (ES6+)
-- Bootstrap 5 para la interfaz
+- HTML5, CSS3, JavaScript
 - Firebase Firestore para almacenamiento de datos
 - Firebase Hosting para despliegue
 
@@ -40,37 +40,6 @@ public/
     │   └── settingsManager.js   # Gestión de configuración
     └── components/    # Componentes reutilizables (vacío por ahora)
 ```
-
-## Configuración de Firebase
-
-1. Crear un proyecto en [Firebase Console](https://console.firebase.google.com/)
-2. Habilitar Firestore Database
-3. Registrar una aplicación web
-4. Actualizar la configuración de Firebase en los archivos HTML:
-   - `public/index.html`
-   - `public/inventory.html`
-   - `public/settings.html`
-
-## Despliegue
-
-### Con Firebase CLI
-
-1. Instalar Firebase CLI: `npm install -g firebase-tools`
-2. Iniciar sesión: `firebase login`
-3. Desplegar: `firebase deploy`
-
-## Desarrollo Local
-
-Simplemente abre `public/index.html` en tu navegador o usa un servidor local como:
-
-```bash
-# Con Python 3
-python -m http.server 8000
-
-# Con Node.js (si tienes http-server instalado)
-npx http-server public
-```
-
 ## Licencia
 
 MIT
