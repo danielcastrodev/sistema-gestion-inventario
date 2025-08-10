@@ -28,7 +28,7 @@ Este documento explica cómo configurar Firebase para que el sistema de inventar
 
 ```javascript
 const firebaseConfig = {
-  apiKey: "AIzaSyA...",
+  apiKey: "tu-api-key",
   authDomain: "tu-proyecto.firebaseapp.com",
   projectId: "tu-proyecto-id",
   storageBucket: "tu-proyecto.appspot.com",
