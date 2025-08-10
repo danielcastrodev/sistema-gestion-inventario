@@ -1,0 +1,49 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Productos collection
+    match /products/{document=**} {
+      // Allow read access to all users
+      allow read: if true;
+      
+      // Allow write access to all users (since there's no auth)
+      // In a production app, you'd want to add authentication
+      allow write: if request.auth != null || true; // Temporarily allow all writes
+      
+      // Additional validation for product data
+      allow create, update: if validateProduct(request.resource.data);
+    }
+    
+    // Settings collection
+    match /settings/{document=**} {
+      // Allow read access to all users
+      allow read: if true;
+      
+      // Allow write access to all users (since there's no auth)
+      allow write: if request.auth != null || true; // Temporarily allow all writes
+      
+      // Additional validation for settings data
+      allow create, update: if validateSettings(request.resource.data);
+    }
+    
+    // Function to validate product data
+    function validateProduct(data) {
+      return data.keys().hasAll(['name', 'category', 'price', 'stock']) &&
+             data.name is string &&
+             data.category is string &&
+             data.price is number &&
+             data.stock is number &&
+             data.price >= 0 &&
+             data.stock >= 0;
+    }
+    
+    // Function to validate settings data
+    function validateSettings(data) {
+      return data.keys().hasAll(['companyName', 'lowStockThreshold', 'currency']) &&
+             data.companyName is string &&
+             data.lowStockThreshold is number &&
+             data.currency is string &&
+             data.lowStockThreshold >= 0;
+    }
+  }
+}
